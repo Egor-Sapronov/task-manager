@@ -1,8 +1,10 @@
 (function () {
     require('./auth/auth.js');
+    require('./tasks/tasks.js');
     angular.module('app', [
         'ngRoute',
-        'components.auth'
+        'components.auth',
+        'components.tasks'
     ])
         .config(['$routeProvider', router])
         .factory('TokenInterceptor', function ($window) {

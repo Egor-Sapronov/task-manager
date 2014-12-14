@@ -54,14 +54,16 @@ app.post('/api/tasks',
             content: req.body.content,
             _user: req.user.userId
         });
+        task.save(function (err, entity) {
+            var user = UserModel.findOne({_id: req.user.userId}, function (err, creater) {
+                creater.tasks.push(entity);
 
-        var user = UserModel.findOne({userId: req.user.userId}, function (err, creater) {
-            creater.tasks.push(task);
-
-            creater.save(function (err, data) {
-                res.send(200, {task: task});
+                creater.save(function (err, data) {
+                    res.status(200).send({task: entity});
+                });
             });
         });
+
 
     });
 
