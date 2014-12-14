@@ -17,10 +17,6 @@ module.exports = function (paths) {
             depends: {
                 angular: 'angular'
             }
-        },
-        ngMd5: {
-            path: paths.vendor + 'angular-md5/angular-md5.js',
-            exports: 'ngMd5'
         }
     };
 };

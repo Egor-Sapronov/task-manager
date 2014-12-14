@@ -25,7 +25,7 @@ gulp.task('vendor', function () {
 gulp.task('scripts', function () {
     gulp.src(paths.src + 'init.js')
         .pipe(plumber())
-        .pipe(browserify({shim: require('./browserify-shim')(paths)}))
+        .pipe(browserify())
         .pipe(gulp.dest(paths.dest + 'assets/scripts/'));
 });
 
