@@ -9,25 +9,31 @@ html
         link(rel='stylesheet', href='vendor/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='vendor/bootstrap-material-design/dist/css/material-wfont.min.css')
         link(rel='stylesheet', href='vendor/bootstrap-material-design/dist/css/ripples.min.css')
+        link(rel='stylesheet', href='assets/stylesheets/style.css')
         script(src='vendor/jquery/dist/jquery.min.js')
     body
-        .container
+        .container(ng-app='app')
             .navbar.navbar-warning
                 .nabar-header
                     button.navbar-toggle
-                    a.navbar-brand(href='#/index') Task manager
+                    a.navbar-brand(href='#/') Task manager
                 .navbar-collapse.collapse.navbar-warning-collapse
                     nav.nav.navbar-nav
                         li
-                            a(href='#/about') Tasks
+                            a(href='#/tasks') Tasks
                         li
-                            a(href='#/task') Create task
+                            a(href='#/createtask') Create task
                     ul.nav.navbar-nav.navbar-right
                         li
                             a(href='#/account') Account
+            section.app-view.shadow-z-2
+                ng-view
 
         script(src='vendor/bootstrap/dist/js/bootstrap.min.js')
         script(src='vendor/bootstrap-material-design/dist/js/material.min.js')
         script(src='vendor/bootstrap-material-design/dist/js/ripples.min.js')
+        script(src='vendor/angular/angular.min.js')
+        script(src='vendor/angular-route/angular-route.js')
+        script(src='assets/scripts/init.js')
         script.
             $.material.init();

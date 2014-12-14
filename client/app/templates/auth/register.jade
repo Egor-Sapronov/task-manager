@@ -1,0 +1,11 @@
+.row
+    .col-md-4
+    .col-md-4(ng-controller='RegisterController as vm')
+        header Register
+        .inputs
+            input.form-control(type='text', placeholder='Username',ng-model='vm.registerData.username')
+            input.form-control(type='password', placeholder='Password',ng-model='vm.registerData.password')
+
+            button.btn.btn-default.btn-raised(ng-click='vm.register()') Register
+            p
+            a(href='#/login') Or login
