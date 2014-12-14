@@ -3,8 +3,7 @@ var mongoose = require('mongoose'),
     config = require('./config'),
     User = require('./models/authSchema').User,
     Client = require('./models/authSchema').Client,
-    AccessToken = require('./models/authSchema').AccessToken,
-    Register = require('./models/registerSchema').RegisterSchema;
+    AccessToken = require('./models/authSchema').AccessToken;
 
 
 var url = process.env['DOTCLOUD_MONGO_MONGODB_URL'] || 'localhost:27017';

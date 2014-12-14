@@ -21,11 +21,6 @@
     "passport-http": "~0.2.2",
     "passport-http-bearer": "~1.0.1",
     "passport-oauth2-client-password": "~0.1.2",
-    "date-utils": "~1.2.16",
-    "cron": "~1.0.5",
-    "time": "~0.11.0",
-    "moment": "~2.8.4",
-    "moment-timezone": "~0.2.5",
     "mongodb": "~1.4.22"
   },
   "devDependencies": {
