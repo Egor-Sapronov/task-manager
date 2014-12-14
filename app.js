@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.post('/oauth/token', oauth2.token);
 
 app.post('/oauth/register', function (req, res) {
-    oauth2.register(req.body.username, req.body.password, req.body.phone, req.body.npa, req.body.fio, function (err, user) {
+    oauth2.register(req.body.username, req.body.password, function (err, user) {
         if (err) {
             res.send(400);
         } else {
@@ -63,7 +63,7 @@ app.post('/api/tasks',
             _user: req.user.userId
         });
         task.save(function (err, entity) {
-            var user = UserModel.findOne({_id: req.user.userId}, function (err, creater) {
+            UserModel.findOne({_id: req.user.userId}, function (err, creater) {
                 creater.tasks.push(entity);
 
                 creater.save(function (err, data) {

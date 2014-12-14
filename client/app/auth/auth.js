@@ -9,7 +9,7 @@ module.exports = (function () {
     AccountController.$inject = ['userService'];
     function AccountController(userService) {
         var vm = this;
-        init();
+
         vm.tasks = [];
         vm.username = '';
 
@@ -17,25 +17,30 @@ module.exports = (function () {
             vm.username = data.name;
         });
 
+        vm.logOff = logOff;
+
+        function logOff() {
+            userService.logOff();
+            init();
+        }
+
         function init() {
             userService.getUserTasks().success(function (data) {
-                vm.tasks=[];
+                vm.tasks = [];
 
-                data.forEach(function(item){
-                   vm.tasks.push(item);
+                data.forEach(function (item) {
+                    vm.tasks.push(item);
                 });
 
             });
         }
 
-
+        init();
     }
 
     LoginController.$inject = ['$window', '$location', 'userService', 'authenticationService'];
     function LoginController($window, $location, userService, authenticationService) {
         var vm = this;
-
-
 
         vm.login = function (username, password) {
             userService.logIn(username, password)
@@ -50,8 +55,6 @@ module.exports = (function () {
 
                 });
         };
-
-
     }
 
     RegisterController.$inject = ['$window', '$location', 'userService', 'authenticationService'];

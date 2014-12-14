@@ -3,6 +3,8 @@
 
     p {{ vm.username }}
 
+    button.btn.btn-default.btn-raised(ng-click='vm.logOff()') Log off
+
     div(ng-repeat='task in vm.tasks')
         p Title: {{ task.title }}
         p.lead Content: {{ task.content }}
