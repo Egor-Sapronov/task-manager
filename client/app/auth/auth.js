@@ -30,6 +30,8 @@ module.exports = (function () {
             userService
                 .removeTask(id)
                 .success(function (err) {
+                    if (index === 0)
+                        vm.tasks = [];
                     vm.tasks = vm.tasks.splice(index, 1);
                 });
         }
