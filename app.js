@@ -39,7 +39,7 @@ app.get('/api/userInfo',
 );
 
 app.get('/', function (req, res) {
-    res.render('spa');
+    res.render('layout');
 });
 
 module.exports = app;
