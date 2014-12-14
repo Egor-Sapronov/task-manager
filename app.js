@@ -5,6 +5,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     oauth2 = require('./libs/oauth2'),
     passport = require('passport'),
+    TaskModel = require('./libs/mongo').TaskModel,
+    UserModel = require('./libs/mongo').UserModel,
     app = express();
 
 require('./libs/auth');
@@ -37,6 +39,31 @@ app.get('/api/userInfo',
         res.json({user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope});
     }
 );
+
+app.get('/api/tasks', function (req, res) {
+    TaskModel.find({}, function (err, data) {
+        res.send(data);
+    });
+});
+
+app.post('/api/tasks',
+    passport.authenticate('bearer', {session: false}),
+    function (req, res) {
+        var task = new TaskModel({
+            title: req.body.title,
+            content: req.body.content,
+            _user: req.user.userId
+        });
+
+        var user = UserModel.findOne({userId: req.user.userId}, function (err, creater) {
+            creater.tasks.push(task);
+
+            creater.save(function (err, data) {
+                res.send(200, {task: task});
+            });
+        });
+
+    });
 
 app.get('/', function (req, res) {
     res.render('layout');

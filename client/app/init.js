@@ -41,7 +41,7 @@
                 templateUrl: '/templates/tasks.html'
             })
             .when('/createtask', {
-                templateUrl: '/templates/createtask.html'
+                templateUrl: '/templates/tasks/create.html'
             })
             .when('/account', {
                 templateUrl: '/templates/auth/account.html'
