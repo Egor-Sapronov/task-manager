@@ -1,6 +1,6 @@
 .row(ng-controller='AccountController as vm')
     .col-md-4
-        h2 Tasks
+        h2 Tasks of the {{ vm.username  }}
         .list-group(ng-repeat='task in vm.tasks')
             .list-group-item
                 .row-action-primary

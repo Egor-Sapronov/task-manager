@@ -32,7 +32,16 @@
         .config(function ($httpProvider) {
             $httpProvider.interceptors.push('TokenInterceptor');
             $httpProvider.interceptors.push('AccessInterceptor');
-        });
+        })
+        .controller('HeaderController', HeaderController);
+
+    HeaderController.$inject = ['$location'];
+    function HeaderController($location) {
+        var vm = this;
+        vm.isActive = function (viewLocation) {
+            return viewLocation === $location.path();
+        };
+    }
 
     function router($routeProvider) {
         $routeProvider

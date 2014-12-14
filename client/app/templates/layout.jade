@@ -7,22 +7,23 @@ html
         meta(name='description', content='')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet', href='vendor/bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet', href='vendor/bootstrap-material-design/dist/css/material.min.css')
         link(rel='stylesheet', href='vendor/bootstrap-material-design/dist/css/material-wfont.min.css')
         link(rel='stylesheet', href='vendor/bootstrap-material-design/dist/css/ripples.min.css')
         link(rel='stylesheet', href='assets/stylesheets/style.css')
         script(src='vendor/jquery/dist/jquery.min.js')
     body
         .container(ng-app='app')
-            .navbar.navbar-warning
+            .navbar.navbar-warning.shadow-z-2
                 .nabar-header
                     button.navbar-toggle
                     a.navbar-brand(href='#/tasks') Tasks
-                .navbar-collapse.collapse.navbar-warning-collapse
+                .navbar-collapse.collapse.navbar-warning-collapse(ng-controller='HeaderController as headerVm')
                     nav.nav.navbar-nav
-                        li
+                        li(ng-class="{ active: headerVm.isActive('/createtask')}")
                             a(href='#/createtask') Create task
                     ul.nav.navbar-nav.navbar-right
-                        li
+                        li(ng-class="{ active: headerVm.isActive('/account')||headerVm.isActive('/login')||headerVm.isActive('/register')}")
                             a(href='#/account') Account
             section.app-view.shadow-z-2
                 ng-view

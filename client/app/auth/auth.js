@@ -61,7 +61,7 @@ module.exports = (function () {
                     authenticationService.username = username;
                     $window.sessionStorage.Bearer = data.access_token;
                     $window.sessionStorage.User = username;
-                    $location.path('/');
+                    $location.path('/account');
                 })
                 .error(function (status, data) {
 
