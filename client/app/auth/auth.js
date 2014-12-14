@@ -3,7 +3,8 @@ module.exports = (function () {
         .factory('userService', userService)
         .factory('authenticationService', authenticationService)
         .controller('AccountController', AccountController)
-        .controller('LoginController', LoginController);
+        .controller('LoginController', LoginController)
+        .controller('RegisterController', RegisterController);
 
     AccountController.$inject = ['userService'];
     function AccountController(userService) {
@@ -27,6 +28,33 @@ module.exports = (function () {
                     $window.sessionStorage.Bearer = data.access_token;
                     $window.sessionStorage.User = username;
                     $location.path('/');
+                })
+                .error(function (status, data) {
+
+                });
+        };
+    }
+
+    RegisterController.$inject = ['$window', '$location', 'userService', 'authenticationService'];
+    function RegisterController($window, $location, userService, authenticationService) {
+        var vm = this;
+
+        vm.registerData = {};
+
+        vm.register = function () {
+            userService.register(vm.registerData)
+                .success(function (data) {
+                    userService.logIn(vm.registerData.username, vm.registerData.password)
+                        .success(function (data) {
+                            authenticationService.isLogged = true;
+                            authenticationService.username = vm.registerData.username;
+                            $window.sessionStorage.Bearer = data.access_token;
+                            $window.sessionStorage.User = vm.registerData.username;
+                            $location.path('/');
+                        })
+                        .error(function (status, data) {
+
+                        });
                 })
                 .error(function (status, data) {
 
