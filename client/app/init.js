@@ -1,8 +1,10 @@
 (function () {
     require('./auth/auth.js');
+    require('./tasks/tasks.js');
     angular.module('app', [
         'ngRoute',
-        'components.auth'
+        'components.auth',
+        'components.tasks'
     ])
         .config(['$routeProvider', router])
         .factory('TokenInterceptor', function ($window) {
@@ -35,13 +37,13 @@
     function router($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/templates/index.html'
+                templateUrl: '/templates/tasks/tasks.html'
             })
             .when('/tasks', {
-                templateUrl: '/templates/tasks.html'
+                templateUrl: '/templates/tasks/tasks.html'
             })
             .when('/createtask', {
-                templateUrl: '/templates/createtask.html'
+                templateUrl: '/templates/tasks/create.html'
             })
             .when('/account', {
                 templateUrl: '/templates/auth/account.html'

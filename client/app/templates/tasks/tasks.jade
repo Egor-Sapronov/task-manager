@@ -1,0 +1,10 @@
+.col-md-4(ng-controller='TaskController as vm')
+    h2 Tasks
+        .list-group(ng-repeat='task in vm.tasks')
+            .list-group-item
+                .row-action-primary
+                    .btn.btn-warning.btn-fab.btn-raised.mdi-navigation-check
+                .row-content
+                    h4.list-group-item-heading Title: {{ task.title }}
+                    p.list-group-item-text Content: {{ task.content }}
+            .list-group-separator

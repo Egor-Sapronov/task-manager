@@ -1,0 +1,10 @@
+.row
+    .col-md-4
+    .col-md-4(ng-controller='TaskController as vm')
+        header New task
+        .inputs
+            input.form-control(type='text', placeholder='Title', ng-model='title')
+            textarea.form-control(type='password', placeholder='Content', ng-model='content')
+
+            button.btn.btn-default.btn-raised(ng-click='vm.newTask(title,content)') Create
+

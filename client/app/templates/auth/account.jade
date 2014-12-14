@@ -1,9 +1,18 @@
-.col-md-4(ng-controller='AccountController as vm')
-    header Account
+.row(ng-controller='AccountController as vm')
+    .col-md-4
+        h2 Tasks
+        .list-group(ng-repeat='task in vm.tasks')
+            .list-group-item
+                .row-action-primary
+                    button.btn.btn-warning.btn-fab.btn-raised.mdi-action-delete(ng-click='vm.removeTask(task._id,$index)')
+                .row-content
+                    h4.list-group-item-heading Title: {{ task.title }}
+                    p.list-group-item-text Content: {{ task.content }}
+            .list-group-separator
+    .col-md-4
+    .col-md-4
+        h2 Account
+        p.lead Name: {{ vm.username }}
+        button.btn.btn-sm.btn-default.btn-raised(ng-click='vm.logOff()') Log off
 
-    p {{ vm.username }}
 
-    ul
-        li task 1
-        li task 2
-        li task 3

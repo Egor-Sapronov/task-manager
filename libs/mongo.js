@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
     config = require('./config'),
     User = require('./models/authSchema').User,
     Client = require('./models/authSchema').Client,
-    AccessToken = require('./models/authSchema').AccessToken;
+    AccessToken = require('./models/authSchema').AccessToken,
+    Task = require('./models/taskSchema').Task;
 
 
 var url = process.env['DOTCLOUD_MONGO_MONGODB_URL'] || 'localhost:27017';
@@ -21,11 +22,13 @@ db.once('open', function callback() {
     log.info("Connected to DB!");
 });
 
-// Auth models
 var UserModel = mongoose.model('User', User),
     ClientModel = mongoose.model('Client', Client),
-    AccessTokenModel = mongoose.model('AccessToken', AccessToken);
+    AccessTokenModel = mongoose.model('AccessToken', AccessToken),
+    TaskModel = mongoose.model('Task', Task);
 
 module.exports.UserModel = UserModel;
 module.exports.ClientModel = ClientModel;
 module.exports.AccessTokenModel = AccessTokenModel;
+
+module.exports.TaskModel = TaskModel;
