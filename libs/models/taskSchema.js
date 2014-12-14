@@ -11,7 +11,7 @@ var Task = new Schema({
     },
     _user: {
         type: String,
-        ref: 'user'
+        ref: 'User'
     }
 });
 

@@ -7,6 +7,8 @@ module.exports = (function () {
     function TaskController($location, taskService) {
         var vm = this;
 
+        vm.tasks = [];
+
         vm.newTask = function (title, content) {
             taskService
                 .create(title, content)
@@ -14,6 +16,20 @@ module.exports = (function () {
                     $location.path('/tasks');
                 });
         };
+
+        vm.getTasks = function () {
+            taskService
+                .get()
+                .success(function (data) {
+                    vm.tasks = data
+                });
+        };
+
+        function init() {
+            vm.getTasks();
+        }
+
+        init();
     }
 
     taskService.$inject = ['$http'];
@@ -24,6 +40,9 @@ module.exports = (function () {
                     title: title,
                     content: content
                 });
+            },
+            get: function () {
+                return $http.get('/api/tasks');
             }
         }
     }

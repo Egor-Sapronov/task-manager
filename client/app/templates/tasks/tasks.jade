@@ -1,8 +1,4 @@
-.col-md-4(ng-controller='AccountController as vm')
-    header Account
-
-    p {{ vm.username }}
-
+.col-md-4(ng-controller='TaskController as vm')
     div(ng-repeat='task in vm.tasks')
         p Title: {{ task.title }}
         p.lead Content: {{ task.content }}

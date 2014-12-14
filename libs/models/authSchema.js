@@ -21,7 +21,7 @@ var User = new Schema({
         type: Date,
         default: Date.now
     },
-    tasks: [{type: Schema.Types.ObjectId, ref: 'Task'}]
+    tasks: [{type: String, ref: 'Task'}]
 });
 
 User.methods.encryptPassword = function (password) {

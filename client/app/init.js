@@ -37,10 +37,10 @@
     function router($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: '/templates/index.html'
+                templateUrl: '/templates/tasks/tasks.html'
             })
             .when('/tasks', {
-                templateUrl: '/templates/tasks.html'
+                templateUrl: '/templates/tasks/tasks.html'
             })
             .when('/createtask', {
                 templateUrl: '/templates/tasks/create.html'

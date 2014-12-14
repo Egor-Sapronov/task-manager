@@ -46,6 +46,14 @@ app.get('/api/tasks', function (req, res) {
     });
 });
 
+app.get('/api/user/tasks',
+    passport.authenticate('bearer', {session: false}),
+    function (req, res) {
+        TaskModel.find({_user: req.user.userId}, function (err, data) {
+            res.status(200).send(data);
+        });
+    });
+
 app.post('/api/tasks',
     passport.authenticate('bearer', {session: false}),
     function (req, res) {
