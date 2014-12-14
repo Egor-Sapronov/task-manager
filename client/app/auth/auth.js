@@ -19,9 +19,19 @@ module.exports = (function () {
 
         vm.logOff = logOff;
 
+        vm.removeTask = removeTask;
+
         function logOff() {
             userService.logOff();
             init();
+        }
+
+        function removeTask(id, index) {
+            userService
+                .removeTask(id)
+                .success(function (err) {
+                    vm.tasks = vm.tasks.splice(index, 1);
+                });
         }
 
         function init() {
@@ -115,6 +125,9 @@ module.exports = (function () {
             },
             getUserTasks: function () {
                 return $http.get('/api/user/tasks');
+            },
+            removeTask: function (id) {
+                return $http.delete('/api/tasks/' + id);
             }
         };
     }

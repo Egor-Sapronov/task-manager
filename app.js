@@ -54,6 +54,15 @@ app.get('/api/user/tasks',
         });
     });
 
+app.delete('/api/tasks/:id',
+    passport.authenticate('bearer', {session: false}),
+    function (req, res) {
+
+        TaskModel.remove({_id: req.params.id}, function (err) {
+            res.send({});
+        });
+    });
+
 app.post('/api/tasks',
     passport.authenticate('bearer', {session: false}),
     function (req, res) {
