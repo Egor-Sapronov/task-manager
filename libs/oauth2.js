@@ -44,8 +44,8 @@ function logOff(username, done) {
 
 exports.logOff = logOff;
 
-function register(username, password, fio, phone, npa, done) {
-    var user = new UserModel({username: username, password: password, phone: phone, npa: npa, fullName: fio});
+function register(username, password, done) {
+    var user = new UserModel({username: username, password: password});
 
     user.save(function (err, user) {
         if (err) {
